@@ -32,7 +32,7 @@ define([
 				var id = utility.getGuid(), testObj = {id:id, testName:testName};
 				var testAdded = utility.addTest(testObj);
 				if (testAdded) {
-					$scope.routeToTest(testName);
+					$scope.routeToTest(testObj.id);
 				}
 				else {
 					alertify.alert('This test name already exists!');
