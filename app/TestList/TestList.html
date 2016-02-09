@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add New Test</h3>
+  </div>
+  <div class="panel-body">
+    <form role="form" name="newTest" class="input-group" ng-submit="addTest(testName)" novalidate ng-show="!localStorageNotSupported">
+      <input name="testName"
+      ng-model="testName"
+      type="text"
+      class="form-control"
+      placeholder="Test Name"
+      aria-label="test name"
+      aria-required="true"
+      required>
+      <span class="input-group-btn">
+        <input type="submit" class="btn btn-primary" value="Add" ng-disabled="newTest.$invalid">
+      </span>
+    </form>
+
+    
+    <div class="alert alert-danger" role="alert" ng-show="localStorageNotSupported" style="margin-top:50px;">We're sorry but local storeg is not supported in this browser.</div>
+
+    <div class="alert alert-info" role="alert" ng-hide="tests.length" style="margin-top:50px;width:50%;"><strong>To begin, start creating test.</strong></div>
+
+    
+  </div>
+</div>
+<div class="panel panel-default" ng-hide="!tests.length">
+  <div class="panel-heading">
+    <h3 class="panel-title">Your Tests:</h3>
+  </div>
+  <div class="panel-body">
+
+    <div class="table-responsive">
+  <table class="table table-condensed table-hover table-bordered">
+    <thead>
+            <tr>
+              <th style="text-align:center;">#</th>
+              <th style="text-align:center;">Test Name</th>
+              <th colspan="2" style="text-align:center;">Actions</th>
+              
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="test in tests">
+              <td style="text-align:center;">{{$index+1}}</td>
+              <td style="text-align:center;" title="Click to edit"><a href="javascript:void(0);" editable-text="test.testName" onbeforesave="updateTestName($data, test.id)">{{test.testName}}</a></td>
+              <td style="text-align:center;"><a ng-click="routeToTest(test.id)" class="btn btn-primary">Add/View Students</a></td>
+              <td style="text-align:center;"><button class="btn btn-danger" value="X" ng-click="removeTest($index)">Remove</button></td>
+            </tr>
+          </tbody>
+    ...
+  </table>
+</div>
+
+  </div>
+</div>

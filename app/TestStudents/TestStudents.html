@@ -1,0 +1,119 @@
+<div class="panel panel-default" style="background:#eee;">
+  <div class="panel-body">
+    <div class="panel panel-default " style="margin:5px;height:50%;width:50%;padding:5px;display:inline-block;">
+      <div class="panel-heading">
+        <h3 class="panel-title">Student Test Results for: <strong>{{currentTestName}}</strong></h3>
+      </div>
+      <div class="panel-body">
+        <form role="form" name="newStudent" id="new-student-input" class="input-group" ng-submit="newStudent.$setPristine(true) || addStudent()" novalidate>
+          <input name="studentName"
+          type="text"
+          ng-model="studentToAdd.name"
+          class="student-name form-control"
+          placeholder="Name"
+          aria-label="name"
+          aria-required="true"
+          required>
+
+
+          <span class="input-group-btn student-input-mod"></span>
+
+          <input name="studentScore"
+          type="number"
+          ng-model="studentToAdd.score"
+          class="student-score form-control"
+          placeholder="Score"
+          aria-label="score"
+          aria-required="true"
+          required>
+
+
+          <span class="input-group-btn student-input-mod"></span>
+
+          <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary modify-student" value="Add" ng-disabled="newStudent.$invalid" aria-label="Add student">
+          </span>
+        </form>
+
+        <div class="alert alert-danger" role="alert" ng-show="newStudent.studentName.$dirty && newStudent.studentName.$invalid" style="margin-top:20px;"><strong>Invalid: Please write a student name.</strong></div>
+        <div class="alert alert-danger" role="alert" ng-show="newStudent.studentScore.$dirty && newStudent.studentScore.$invalid" style="margin-top:20px;"><strong>Invalid: Please input a number for the student score.</strong></div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default" style="margin:5px; height:50%; width:50%;padding:5px; overflow:auto;display:inline-block;">
+      <div class="panel-heading">
+        <h3 class="panel-title">Students List</h3>
+      </div>
+      <div class="panel-body">
+       <div ng-repeat="student in students" class="row">
+        <form name="addedStudent" class="list-space input-group" novalidate>
+          <input name="studentName"
+          type="text"
+          ng-model="student.name"
+          class="student-name form-control"
+          placeholder="Name"
+          required
+          aria-label="student name"
+          aria-required="true"
+          required>
+
+         
+          <span class="input-group-btn student-input-mod"></span>
+
+          <input name="studentScore"
+          type="number"
+          ng-model="student.score"
+          class="student-score form-control"
+          ng-class="{failed: student.score < 65}"
+          placeholder="Score"
+          aria-label="student score"
+          aria-required="true"
+          required>
+
+          
+          <span class="input-group-btn student-input-mod"></span>
+
+          <span class="input-group-btn">
+            <button class="btn btn-danger modify-student" ng-click="removeStudent($index)" aria-label="Remove">X</button>
+          </span>
+        </form>
+
+        
+        <div class="alert alert-danger" role="alert" ng-show="addedStudent.studentName.$dirty && addedStudent.studentName.$invalid" style="margin-top:20px;"><strong>Invalid: Please write a student name.</strong></div>
+        <div class="alert alert-danger" role="alert" ng-show="addedStudent.studentScore.$dirty && addedStudent.studentScore.$invalid" style="margin-top:20px;"><strong>Invalid: Please input a number for the student score.</strong></div>
+
+      </div>
+      
+      <div class="alert alert-info" role="alert" ng-hide="students.length" style="margin-top:20px;"><strong>To begin, add a new student above.</strong></div>
+      <div >
+        <button class="btn btn-danger pull-left" ng-click="removeAll()" aria-label="remove all" ng-disabled="students.length == 0" style="margin-top: 10px;
+    margin-left: -15px;">Remove All</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default " style="margin:5px;width:40%;padding:5px;float:right;top:0;display:inline-block;margin-top: -50px;">
+    <div class="panel-heading">
+      <h3 class="panel-title"><strong>Test Summary:</strong></h3>
+    </div>
+    <div class="panel-body">
+      <section id="test-results">
+        <div>
+          <span><strong>Minimum Score:</strong></span><strong>{{minScore}}</strong> 
+        </div>
+        <div>
+          <span><strong>Maximum Score:</strong></span><strong>{{maxScore}}</strong> 
+        </div>
+        <div>
+          <span><strong>Average Score:</strong></span><strong>{{avgScore}}</strong> 
+        </section>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,9 @@
+/* app css stylesheet */
+
+.failed {
+	background-color: #ff9999;
+}
+
+[ng-cloak] {
+    display: none;
+}
