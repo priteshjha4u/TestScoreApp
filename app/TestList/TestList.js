@@ -21,7 +21,6 @@ define([
 			$rootScope.rootTitle = 'Test List';
 			$rootScope.hideBtnViewList = true;
 			$scope.tests = utility.getTests();
-			console.log($scope.tests);
 			$scope.localStorageNotSupported = utility.localStorageNotSupported;
 			
 			$scope.routeToTest = function (testName) {
@@ -35,7 +34,7 @@ define([
 					$scope.routeToTest(testObj.id);
 				}
 				else {
-					alertify.alert('This test name already exists!');
+					alertify.alert('<b>"'+testName+'"</b> test name already exists!');
 				}
 			};
 
@@ -53,7 +52,7 @@ define([
 					}
 					return val;
 				});
-				localStorage.setItem(utility.testStorageId, stringifiedData);
+				utility.setTest(stringifiedData);
 				$scope.tests = utility.getTests();
 				return true;
 			};

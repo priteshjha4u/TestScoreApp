@@ -17,6 +17,10 @@ define([
 			function getTests() {
 				return JSON.parse(localStorage.getItem(testStorageId) || '[]');
 			}
+
+			function setTest(stringifiedData) {
+				localStorage.setItem(testStorageId, stringifiedData);
+			}
 			
 			function getGuid(){
 				return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -93,7 +97,8 @@ define([
 				//local storage support check
 
 				localStorageNotSupported : localStorageNotSupported,
-				testStorageId: testStorageId
+				testStorageId: testStorageId,
+				setTest: setTest
 			};
 
 		});
