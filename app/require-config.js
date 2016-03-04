@@ -24,7 +24,9 @@ require.config({
 		angularMocks: 'bower_components/angular-mocks/angular-mocks',
 		xeditable: 'bower_components/angular-xeditable/dist/js/xeditable',
 		text: 'bower_components/requirejs-text/text',
-		alertify: 'bower_components/alertify.js/lib/alertify.min'
+		alertify: 'bower_components/alertify.js/lib/alertify.min',
+		jUI: 'bower_components/jquery-ui/jquery-ui.min',
+		jsPanel: 'bower_components/jspanel/source/jquery.jspanel.min'
 	},
 	shim: {
 		'angular' : {

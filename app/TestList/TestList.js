@@ -2,6 +2,7 @@
 define([
 	'angular',
 	'alertify',
+	'jsPanel',
 	'angularRoute',
 	'xeditable',
 	'services/localstorage'
@@ -22,7 +23,7 @@ define([
 			$rootScope.hideBtnViewList = true;
 			$scope.tests = utility.getTests();
 			$scope.localStorageNotSupported = utility.localStorageNotSupported;
-			
+			//$.jsPanel({position:'center',content:'Hello world'});
 			$scope.routeToTest = function (testName) {
 				$location.path('TestStudents/'+testName);
 			};

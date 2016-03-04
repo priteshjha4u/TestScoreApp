@@ -3,6 +3,7 @@
 define([
 	'angular',
 	'alertify',
+    'jUI',
 	'angularRoute',
 	'xeditable',
 	'services/localstorage'
@@ -29,7 +30,7 @@ define([
 		$scope.studentToAdd = {name:'', score:''};
 		$scope.students = utility.getResults($scope.currentTest) || [];
 		$scope.currentTestName = '';
-
+        //$.jsPanel({position:'center',content:'Hello world'});
 		var testArr = utility.getTests();
 		for (var i = 0, len = testArr.length; i < len; ++i) {
 			if ($scope.currentTest === testArr[i].id) {
